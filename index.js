@@ -60,7 +60,7 @@ var Typer = {
             window.scrollBy(0, 50);
         }
 
-/* The code snippet you provided is handling key events in the Typer object. */
+        /* The code snippet you provided is handling key events in the Typer object. */
         if (key.preventDefault && key.key != 122) {
             key.preventDefault();
         }
@@ -98,7 +98,7 @@ Typer.speed = 3;
 Typer.file = 'agus.txt';
 Typer.init();
 
-var timer = setInterval('t();', 30);
+var timer = setInterval('t();', 1); // es 30 
 function t() {
     Typer.addText({ key: 123748 });
 

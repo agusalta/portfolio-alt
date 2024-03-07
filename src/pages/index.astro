@@ -3,9 +3,43 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to my portfolio.">
-  <main class="relative">
+  <main id="main" class="relative">
     <script type="text/javascript" src="index.js"></script>
     <div id="console"></div>
-    <input class="absolute inset-x-0 bottom-0 h-5" />
+    <span id="a">User@agus-portfolio</span>:<span id="b">~</span><span id="c"
+      >$</span
+    >
+    <div class="relative">
+      <br />
+      <input
+        type="text"
+        id="terminal"
+        class="absolute inset-x-0 bottom-0 h-5"
+      />
+      <span class="absolute inset-x-0 h-5" id="code"></span>
+    </div>
   </main>
 </Layout>
+
+<script type="text/javascript" src="index.js"></script>
+<script>
+  const input = document.getElementById("terminal") as HTMLInputElement;
+  const span = document.getElementById("code");
+
+  input.addEventListener("keydown", function (event) {
+    const intext = input.value.trim().toLowerCase();
+
+    if (intext === "clear") {
+      if (span) {
+        const consoleElement = document.getElementById("console");
+        if (consoleElement) {
+          consoleElement.style.display = "none"; // Oculta el elemento console
+        }
+      }
+    } else {
+      if (span) {
+        span.innerText = "";
+      }
+    }
+  });
+</script>
