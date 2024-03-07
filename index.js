@@ -26,19 +26,19 @@ var Typer = {
     },
 
     addText: function (key) {
-        if (key.keyCode == 18) {
+        if (key.key == 18) {
             Typer.accessCount++;
 
             if (Typer.accessCount >= 3) {
                 Typer.makeAccess();
             }
-        } else if (key.keyCode == 20) {
+        } else if (key.key == 20) {
             Typer.deniedCount++;
 
             if (Typer.deniedCount >= 3) {
                 Typer.makeDenied();
             }
-        } else if (key.keyCode == 27) {
+        } else if (key.key == 27) {
             Typer.hidepop();
         } else if (Typer.text) {
             var cont = Typer.content();
@@ -48,7 +48,7 @@ var Typer = {
                         .html()
                         .substring(0, cont.length - 1),
                 );
-            if (key.keyCode != 8) {
+            if (key.key != 8) {
                 Typer.index += Typer.speed;
             } else {
                 if (Typer.index > 0) Typer.index -= Typer.speed;
@@ -60,11 +60,12 @@ var Typer = {
             window.scrollBy(0, 50);
         }
 
-        if (key.preventDefault && key.keyCode != 122) {
+/* The code snippet you provided is handling key events in the Typer object. */
+        if (key.preventDefault && key.key != 122) {
             key.preventDefault();
         }
 
-        if (key.keyCode != 122) {
+        if (key.key != 122) {
             // otherway prevent keys default behavior
             key.returnValue = false;
         }
@@ -72,15 +73,13 @@ var Typer = {
 
     updLstChr: function () {
         var cont = this.content();
+        if (cont.substring(cont.length - 1, cont.length) == '|') {
+            this.write('');
+        } else {
+            this.write('|');
+        }
+    }
 
-        if (cont.substring(cont.length - 1, cont.length) == '|')
-            $('#console').html(
-                $('#console')
-                    .html()
-                    .substring(0, cont.length - 1),
-            );
-        else this.write('|'); // else write it
-    },
 };
 
 function replaceUrls(text) {
@@ -101,7 +100,7 @@ Typer.init();
 
 var timer = setInterval('t();', 30);
 function t() {
-    Typer.addText({keyCode: 123748});
+    Typer.addText({ key: 123748 });
 
     if (Typer.index > Typer.text.length) {
         clearInterval(timer);
@@ -110,7 +109,7 @@ function t() {
 }
 
 document.onkeydown = function (e) {
-    if (e.keyCode == 27) {
+    if (e.key == 27) {
         // fastforward text 
         Typer.index = Typer.text.length;
     }
