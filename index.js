@@ -168,7 +168,7 @@ input.addEventListener("keydown", function (event) {
                     { command: "EDUCATION", description: "ver mi educación" },
                     { command: "PROJECTS", description: "ver mis proyectos" },
                     { command: "CAT AGUS.TXT", description: "mostrar .txt" },
-                    { command: "PHOTO", description: "mostrar una foto de mía" },
+                    { command: "PHOTO", description: "mostrar una foto mía" },
 
                 ];
 
