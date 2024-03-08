@@ -1,10 +1,13 @@
 <span id="a">User@agus-portfolio</span>:<span id="b">~</span><span id="c">$</span> cd Portfolio/<!-- kjsdfhkjdhsfkjdshfkj -->About_me
 <span id="a">User@agus-portfolio</span>:<span id="b">~</span><span id="c">$</span> cat <!-- kjsdfhkjdhsfkjdshfkj -->agus.txt<br/><br/>
-Mi frase favorita, "<span id="k">El código es la poesía de la lógica</span>". <!-- sjkfhskjf -->
+"<span id="k">El código es la poesía de la lógica</span>". <!-- sjkfhskjf -->
+
+<span style="color: orange;">*BIENVENIDOS A MI PORTAFOLIO.*</span>
 
 Me llamo <strong>Agustín Altamirano.</strong> <!-- laglaglaglaglaglaglaglaglaglaglaglag -->
 <p>Estoy cursando la carrera de Analista de Sistemas en la ORT.</p>
-<p>Me he capacitado en diversos cursos de programación, incluyendo el <strong>Professional Fullstack Developer en la UTN.</strong></p> <!-- ksjdokhdfgdufdfkjhfkjahdfkjhafkjhakf -->
+Me he capacitado en diversos cursos de programación,
+<p>incluyendo el <strong>Professional Fullstack Developer en la UTN.</strong></p> <!-- ksjdokhdfgdufdfkjhfkjahdfkjhafkjhakf -->
 <p>Recientemente, lideré un proyecto para <a href="https://copper-tube-calculator-v2.netlify.app/" target="_blank" rel="noopener"> The Copper Development Association Inc.</a> Desarrollando una calculadora de tubos de cobre. </p><!-- kjdhjhgdgldjhgdwtoiewotwotjdfkjdfffsf -->
 <!-- hsdgfhjfkdjhfkjsdhfkjdshfkjsdhfkjsdhkfjhdskjfhksdjhfkdsj --> <p> Pueden encontrarme en mis redes sociales: <br> <a href="https://github.com/agusalta?tab=repositories" target="_blank" rel="noopener">Github</a> <br> <a href="https://www.linkedin.com/in/agust%C3%ADn-altamirano-a61400167/" target="_blank" rel="noopener">LinkedIn</a></p>
 O a través de mi<!-- slightdelayhere--> correo electrónico <!-- longlonglongcomment --><a href="mailto:agusalta002@gmail.com">agusalta002@gmail.com</a>.

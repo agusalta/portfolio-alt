@@ -113,6 +113,7 @@ document.onkeydown = function (e) {
 }
 
 // 
+
 const input = document.getElementById("terminal");
 const span = document.getElementById("code");
 let godmode = false;
@@ -125,13 +126,16 @@ function showABC() {
 
     setTimeout(() => {
         input.classList.remove("highlight");
-    }, 5000);
+    }, 15000);
 }
 
 setTimeout(showABC, 16500);
 
+let listaDeDirectorios = [];
+
 input.addEventListener("keydown", function (event) {
     const intext = input.value.trim().toLowerCase();
+
 
     switch (intext) {
         case "clear":
@@ -156,24 +160,28 @@ input.addEventListener("keydown", function (event) {
         case "help":
             if (span) {
                 let commands = [
-                    { command: "CLEAR", description: "clear the console" },
-                    { command: "HELP", description: "display available commands" },
-                    { command: "CONTACT", description: "get in touch with me" },
-                    { command: "ABOUT", description: "learn more about me" },
-                    { command: "SKILLS", description: "view my skills" },
-                    { command: "EDUCATION", description: "view my education" },
-                    { command: "PROJECTS", description: "view my projects" },
-                    { command: "CAT AGUS.TXT", description: "show .txt" },
-                    { command: "PHOTO", description: "show a picture of myself" },
+                    { command: "CLEAR", description: "limpia la consola" },
+                    { command: "HELP", description: "muestra los comandos disponibles" },
+                    { command: "CONTACT", description: "ponerse en contacto conmigo" },
+                    { command: "ABOUT", description: "saber más sobre mí" },
+                    { command: "SKILLS", description: "ver mis habilidades" },
+                    { command: "EDUCATION", description: "ver mi educación" },
+                    { command: "PROJECTS", description: "ver mis proyectos" },
+                    { command: "CAT AGUS.TXT", description: "mostrar .txt" },
+                    { command: "PHOTO", description: "mostrar una foto de mía" },
+
                 ];
 
                 commands.forEach(({ command, description }) => {
                     const listItem = document.createElement("div");
                     listItem.textContent = command + " - " + description;
-
                     span.appendChild(listItem);
                 });
 
+                const pitem = document.createElement("p");
+                span.appendChild(pitem);
+                pitem.textContent = "Hay muchos comandos ocultos ☺";
+                pitem.style.color = "red";
                 input.value = " ";
             }
 
@@ -339,10 +347,68 @@ input.addEventListener("keydown", function (event) {
                 input.value = "";
             }
             break;
+
         default:
             if (span) {
                 span.innerText = "";
             }
+
+            if (intext.startsWith("mkdir")) {
+                input.addEventListener("keypress", function (event) {
+                    if (event.key === 'Enter') {
+                        const nuevoDirectorio = input.value.substring(6).trim();
+
+                        if (nuevoDirectorio) {
+                            span.textContent = `Directorio creado: ${nuevoDirectorio}`;
+                            listaDeDirectorios.push(nuevoDirectorio);
+                            input.value = "";
+                        }
+                    }
+                });
+            } else if (intext.startsWith("rm")) {
+                const eliminarDirectorio = intext.substring(3).trim();
+
+                input.addEventListener("keypress", function (event) {
+                    if (event.key === 'Enter') {
+                        if (eliminarDirectorio) {
+                            span.textContent = `Directorio eliminado: ${eliminarDirectorio}`;
+                            const indice = listaDeDirectorios.indexOf(eliminarDirectorio);
+
+                            if (indice !== -1) {
+                                listaDeDirectorios.splice(indice, 1);
+                            }
+                            input.value = "";
+                        }
+                    }
+                });
+
+                listaDeDirectorios.forEach(nombre => {
+                    const div = document.createElement("div");
+                    div.textContent = nombre;
+                    span.appendChild(div);
+                });
+            } else if (intext.startsWith("ls")) {
+                span.innerHTML = "";
+                listaDeDirectorios.forEach(nombre => {
+                    const div = document.createElement("div");
+                    div.textContent = nombre;
+                    span.appendChild(div);
+                });
+
+                input.value = "";
+            }
+
+
+            if (intext.includes("cd")) {
+                span.textContent = "cd: No such file or directory: /directorio/no/existente";
+                input.value = "";
+            }
+
+            if (intext.includes("sudo")) {
+                span.textContent = "echo '¡Che! ¡Mirá quién se hace el pillo usando sudo!'";
+                input.value = "";
+            }
+
             break;
     }
 });
