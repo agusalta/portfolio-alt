@@ -73,10 +73,9 @@ var Typer = {
         var cont = this.content();
         if (cont.substring(cont.length - 1, cont.length) == '|') {
             this.write('');
-        } else {
-            this.write('|');
         }
     }
+
 
 };
 
@@ -92,12 +91,12 @@ function replaceUrls(text) {
     }
 }
 
-let typingVelocity = 30;
+
 Typer.speed = 3;
 Typer.file = 'agus.txt';
 Typer.init();
 
-var timer = setInterval('t();', typingVelocity);
+var timer = setInterval('t();', 30);
 function t() {
     Typer.addText({ key: 123748 });
 
