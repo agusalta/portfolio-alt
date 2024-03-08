@@ -112,6 +112,241 @@ document.onkeydown = function (e) {
     }
 }
 
+// 
+const input = document.getElementById("terminal");
+const span = document.getElementById("code");
+let godmode = false;
+
+document.getElementById("abc").classList.add("hidden");
+
+function showABC() {
+    document.getElementById("abc").classList.remove("hidden");
+    input.classList.add("highlight");
+
+    setTimeout(() => {
+        input.classList.remove("highlight");
+    }, 5000);
+}
+
+setTimeout(showABC, 16500);
+
+input.addEventListener("keydown", function (event) {
+    const intext = input.value.trim().toLowerCase();
+
+    switch (intext) {
+        case "clear":
+            if (span) {
+                const consoleElement = document.getElementById("console");
+                if (consoleElement) {
+                    consoleElement.style.display = "none";
+                    input.value = " ";
+                }
+            }
+            break;
+
+        case "cat agus.txt":
+            if (span) {
+                const consoleElement = document.getElementById("console");
+                if (consoleElement && consoleElement.style.display === "none") {
+                    consoleElement.style.display = "block";
+                    input.value = "";
+                }
+            }
+            break;
+        case "help":
+            if (span) {
+                let commands = [
+                    { command: "CLEAR", description: "clear the console" },
+                    { command: "HELP", description: "display available commands" },
+                    { command: "CONTACT", description: "get in touch with me" },
+                    { command: "ABOUT", description: "learn more about me" },
+                    { command: "SKILLS", description: "view my skills" },
+                    { command: "EDUCATION", description: "view my education" },
+                    { command: "PROJECTS", description: "view my projects" },
+                    { command: "CAT AGUS.TXT", description: "show .txt" },
+                    { command: "PHOTO", description: "show a picture of myself" },
+                ];
+
+                commands.forEach(({ command, description }) => {
+                    const listItem = document.createElement("div");
+                    listItem.textContent = command + " - " + description;
+
+                    span.appendChild(listItem);
+                });
+
+                input.value = " ";
+            }
+
+            break;
+
+        case "contact":
+            if (span) {
+                let contacts = [
+                    { com: "LINKEDIN", URL: "https://t.ly/hz8jJ" },
+                    { com: "CORREO", URL: "mailto:agusalta002@gmail.com" },
+                    { com: "GITHUB", URL: "https://github.com/agusalta" },
+                    { com: "TELEFONO", URL: "tel:+5491132405674" },
+                ];
+
+                contacts.forEach(({ com, URL }) => {
+                    const listItem = document.createElement("div");
+                    const link = document.createElement("a");
+                    link.href = URL;
+                    link.textContent = com;
+                    link.target = "_blank";
+                    listItem.appendChild(link);
+                    span.appendChild(listItem);
+                });
+
+                input.value = " ";
+            }
+            break;
+
+        case "about":
+            if (span) {
+                let about = [
+                    { fact: "NOMBRE", description: "Agustín" },
+                    { fact: "APELLIDO", description: "Altamirano" },
+                    { fact: "EDAD", description: "21" },
+                    { fact: "HOBBIE", description: "Escritura" },
+                    { fact: "FAV_COLOR", description: "Naranja" },
+                ];
+
+                about.forEach(({ fact, description }) => {
+                    const listItem = document.createElement("div");
+                    listItem.textContent = fact + ": " + description;
+
+                    span.appendChild(listItem);
+                });
+
+                input.value = " ";
+            }
+            break;
+
+        case "skills":
+            if (span) {
+                let skills = [
+                    { area: "WEB", language: "HTML, CSS, JAVASCRIPT" },
+                    { area: "FRONTEND", language: "REACT, .NET" },
+                    { area: "BACKEND", language: "NODEJS, JAVA, C#" },
+                    { area: "DATABASE", language: "SQL, MONGODB" },
+                    { area: "MISCELLANEOUS", language: "MATERIALUI, SCSS, ASTRO" },
+                ];
+
+                skills.forEach(({ area, language }) => {
+                    const listItem = document.createElement("div");
+                    listItem.textContent = area + ": " + language;
+
+                    span.appendChild(listItem);
+                });
+
+                input.value = " ";
+            }
+            break;
+
+        case "education":
+            if (span) {
+                let education = [
+                    {
+                        institute: "COLEGIO MALLINCKRODT",
+                        degree: "Bachiller en Ciencias Sociales ",
+                        time: "En 2008/En 2020",
+                    },
+                    {
+                        institute: "CODERHOUSE",
+                        degree: "Certificado en Desarrollo Web",
+                        time: "38 horas totales",
+                    },
+                    {
+                        institute: "UTN",
+                        degree: "Desarrollo con ReactJs",
+                        time: "105 horas totales",
+                    },
+                    {
+                        institute: "UTN",
+                        degree: "Desarrollo con NodeJs",
+                        time: "45 horas totales",
+                    },
+                    {
+                        institute: "ORT",
+                        degree: "Analista de sistemas",
+                        time: "En 2023/Dic 2024",
+                    },
+                ];
+
+                education.forEach(({ institute, degree, time }) => {
+                    const listItem = document.createElement("div");
+                    listItem.textContent = institute + " - " + degree + " - " + time;
+
+                    span.appendChild(listItem);
+                });
+
+                input.value = " ";
+            }
+            break;
+
+        case "projects":
+            if (span) {
+                let projects = [
+                    {
+                        name: "Calculadora de tubos de cobre",
+                        company: "Copper Development Association Inc.",
+                        time: "2 Meses",
+                        preview: "https://t.ly/Ly3EW",
+                    },
+                ];
+
+                const listContainer = document.createElement("div");
+                listContainer.style.display = "grid";
+                listContainer.style.gridTemplateColumns = "repeat(2, 1fr)";
+                listContainer.style.gap = "10px";
+
+                projects.forEach(({ name, company, time, preview }) => {
+                    const listItem = document.createElement("div");
+                    listItem.style.padding = "10px";
+                    listItem.innerHTML = `
+              <p><strong>Nombre:</strong> ${name}</p>
+              <p><strong>Compañía:</strong> ${company}</p>
+              <p><strong>Tiempo:</strong> ${time}</p>
+              <p><strong>Preview:</strong> <a href="${preview}" target="_blank">${preview}</a></p>
+            `;
+
+                    listContainer.appendChild(listItem);
+                });
+
+                span.appendChild(listContainer);
+                input.value = " ";
+            }
+            break;
+
+        case "god":
+            if (span) {
+                if (!godmode) {
+                    span.textContent = "godmode ON";
+                    godmode = true;
+                } else {
+                    span.textContent = "godmode OFF";
+                    godmode = false;
+                }
+                input.value = " ";
+            }
+            break;
+        case "photo":
+            if (span) {
+                const photo = document.createElement("img");
+                photo.src = "yo.png";
+                span.appendChild(photo);
+                input.value = "";
+            }
+            break;
+        default:
+            if (span) {
+                span.innerText = "";
+            }
+            break;
+    }
+});
+
 
 
 
