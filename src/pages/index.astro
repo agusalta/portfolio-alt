@@ -78,6 +78,7 @@ import Layout from "../layouts/Layout.astro";
             { command: "EDUCATION", description: "view my education" },
             { command: "PROJECTS", description: "view my projects" },
             { command: "CAT AGUS.TXT", description: "show .txt" },
+            { command: "PHOTO", description: "show a picture of myself" },
           ];
 
           commands.forEach(({ command, description }) => {
@@ -96,15 +97,18 @@ import Layout from "../layouts/Layout.astro";
         if (span) {
           let contacts = [
             { com: "LINKEDIN", URL: "https://t.ly/hz8jJ" },
-            { com: "CORREO", URL: "agusalta002@gmail.com" },
+            { com: "CORREO", URL: "mailto:agusalta002@gmail.com" },
             { com: "GITHUB", URL: "https://github.com/agusalta" },
-            { com: "TELEFONO", URL: "(+54) 9 11-3240-5674" },
+            { com: "TELEFONO", URL: "tel:+5491132405674" },
           ];
 
           contacts.forEach(({ com, URL }) => {
             const listItem = document.createElement("div");
-            listItem.textContent = com + ": " + URL;
-
+            const link = document.createElement("a");
+            link.href = URL;
+            link.textContent = com;
+            link.target = "_blank";
+            listItem.appendChild(link);
             span.appendChild(listItem);
           });
 
@@ -241,7 +245,14 @@ import Layout from "../layouts/Layout.astro";
           input.value = " ";
         }
         break;
-
+      case "photo":
+        if (span) {
+          const photo = document.createElement("img");
+          photo.src = "yo.png";
+          span.appendChild(photo);
+          input.value = "";
+        }
+        break;
       default:
         if (span) {
           span.innerText = "";
