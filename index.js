@@ -69,6 +69,15 @@ var Typer = {
         }
     },
 
+    updLstChr: function () {
+        var cont = this.content();
+        if (cont.substring(cont.length - 1, cont.length) == '|') {
+            this.write('');
+        } else {
+            this.write('|');
+        }
+    }
+
 };
 
 function replaceUrls(text) {
