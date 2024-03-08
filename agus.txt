@@ -10,5 +10,4 @@ Me llamo Agustín Altamirano. <!-- laglaglaglaglaglaglaglaglaglaglaglag -->
 O a través de mi<!-- slightdelayhere--> correo electrónico <!-- longlonglongcomment --><a href="agusalta002@gmail.com">agusalta002@gmail.com</a>.
 
 <p>Saludos!</p>
-
-
+<p> *Run the command HELP to show a list of commands* <p>

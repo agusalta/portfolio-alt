@@ -60,25 +60,14 @@ var Typer = {
             window.scrollBy(0, 50);
         }
 
-        /* The code snippet you provided is handling key events in the Typer object. */
         if (key.preventDefault && key.key != 122) {
             key.preventDefault();
         }
 
         if (key.key != 122) {
-            // otherway prevent keys default behavior
             key.returnValue = false;
         }
     },
-
-    updLstChr: function () {
-        var cont = this.content();
-        if (cont.substring(cont.length - 1, cont.length) == '|') {
-            this.write('');
-        } else {
-            this.write('|');
-        }
-    }
 
 };
 
@@ -94,11 +83,12 @@ function replaceUrls(text) {
     }
 }
 
+let typingVelocity = 30;
 Typer.speed = 3;
 Typer.file = 'agus.txt';
 Typer.init();
 
-var timer = setInterval('t();', 1); // es 30 
+var timer = setInterval('t();', typingVelocity);
 function t() {
     Typer.addText({ key: 123748 });
 
@@ -110,7 +100,6 @@ function t() {
 
 document.onkeydown = function (e) {
     if (e.key == 27) {
-        // fastforward text 
         Typer.index = Typer.text.length;
     }
 }
